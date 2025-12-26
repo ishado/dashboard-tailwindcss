@@ -1,0 +1,12 @@
+{
+  "name": "tailwind-admin-rtl",
+  "version": "1.0.0",
+  "description": "Full TailwindCSS Admin Dashboard with RTL Support",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch",
+    "build": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

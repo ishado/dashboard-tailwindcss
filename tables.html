@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الجداول</title>
+    <link rel="stylesheet" href="assets/css/output.css">
+</head>
+<body class="bg-gray-50 dark:bg-dark-bg min-h-screen">
+    
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-40 lg:hidden hidden"></div>
+    
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 start-0 z-50 w-64 h-full bg-white dark:bg-dark-surface border-e border-gray-200 dark:border-dark-border transition-transform duration-300 lg:translate-x-0 -translate-x-full">
+        <div class="flex items-center justify-between h-16 px-6 border-b border-gray-200 dark:border-dark-border">
+            <a href="dashboard.html" class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+                    </svg>
+                </div>
+                <span class="text-xl font-bold text-gray-900 dark:text-white">لوحة التحكم</span>
+            </a>
+            <button class="lg:hidden text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        
+        <nav class="p-4 space-y-1 overflow-y-auto h-[calc(100vh-4rem)] scrollbar-hide">
+            <a href="dashboard.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                </svg>
+                <span>الرئيسية</span>
+            </a>
+            <a href="users.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+                <span>المستخدمين</span>
+            </a>
+            <a href="forms.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                <span>النماذج</span>
+            </a>
+            <a href="tables.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                </svg>
+                <span>الجداول</span>
+            </a>
+        </nav>
+    </aside>
+    
+    <div class="lg:ps-64 min-h-screen flex flex-col">
+        <header class="sticky top-0 z-30 bg-white dark:bg-dark-surface border-b border-gray-200 dark:border-dark-border">
+            <div class="flex items-center justify-between h-16 px-4 lg:px-8">
+                <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <svg class="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                
+                <div class="hidden md:flex flex-1 max-w-xl">
+                    <div class="relative w-full">
+                        <svg class="absolute top-1/2 -translate-y-1/2 start-3 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                        <input type="text" placeholder="بحث..." class="w-full ps-10 pe-4 py-2 rounded-lg border border-gray-300 dark:border-dark-border bg-gray-50 dark:bg-dark-bg text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-2">
+                    <button id="dirToggle" class="btn btn-secondary text-sm px-3 py-2">LTR</button>
+                    <button id="themeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <svg class="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                    <button class="relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <svg class="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                        </svg>
+                    </button>
+                    <div class="relative">
+                        <button class="flex items-center gap-2 p-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                            <img src="https://ui-avatars.com/api/?name=Admin+User&background=0ea5e9&color=fff" alt="Profile" class="w-8 h-8 rounded-full">
+                            <span class="hidden md:block text-sm font-medium text-gray-700 dark:text-gray-200">المدير</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <main class="flex-1 p-4 lg:p-8">
+            <div class="mb-8">
+                <h1 class="text-2xl font-bold text-gray-900 dark:text-white">الجداول</h1>
+                <p class="text-gray-600 dark:text-gray-400 mt-1">مكونات الجداول مع دعم RTL</p>
+            </div>
+
+            <div class="space-y-6">
+                
+                <!-- Basic Table -->
+                <div class="card p-6">
+                    <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">جدول أساسي</h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-dark-border">
+                                    <th class="text-start text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider py-4 px-6">ID</th>
+                                    <th class="text-start text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider py-4 px-6">الاسم</th>
+                                    <th class="text-start text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider py-4 px-6">المسمى الوظيفي</th>
+                                    <th class="text-start text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider py-4 px-6">الحالة</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 dark:text-white">001</td>
+                                    <td class="py-4 px-6 text-sm text-gray-700 dark:text-gray-300">أحمد محمد</td>
+                                    <td class="py-4 px-6 text-sm text-gray-700 dark:text-gray-300">مطور واجهات</td>
+                                    <td class="py-4 px-6"><span class="badge badge-success">نشط</span></td>
+                                </tr>
+                                <tr class="border-b border-gray-100 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 dark:text-white">002</td>
+                                    <td class="py-4 px-6 text-sm text-gray-700 dark:text-gray-300">سارة علي</td>
+                                    <td class="py-4 px-6 text-sm text-gray-700 dark:text-gray-300">مصممة جرافيك</td>
+                                    <td class="py-4 px-6"><span class="badge badge-warning">إجازة</span></td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 dark:text-white">003</td>
+                                    <td class="py-4 px-6 text-sm text-gray-700 dark:text-gray-300">خالد أحمد</td>
+                                    <td class="py-4 px-6 text-sm text-gray-700 dark:text-gray-300">مدير مشروعات</td>
+                                    <td class="py-4 px-6"><span class="badge badge-success">نشط</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Sortable Table -->
+                <div class="card p-6">
+                    <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">جدول قابل للفرز</h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-dark-border">
+                                    <th class="text-start text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider py-4 px-6 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        <div class="flex items-center gap-2">
+                                            الاسم
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path>
+                                            </svg>
+                                        </div>
+                                    </th>
+                                    <th class="text-start text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider py-4 px-6 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        <div class="flex items-center gap-2">
+                                            البريد الإلكتروني
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path>
+                                            </svg>
+                                        </div>
+                                    </th>
+                                    <th class="text-start text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider py-4 px-6 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        <div class="flex items-center gap-2">
+                                            التاريخ
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path>
+                                            </svg>
+                                        </div>
+                                    </th>
+                                    <th class="text-start text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider py-4 px-6">المبلغ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="py-4 px-6 text-sm text-gray-700 dark:text-gray-300">أحمد محمد</td>
+                                    <td class="py-4 px-6 text-sm text-gray-700 dark:text-gray-300">ahmed@example.com</td>
+                                    <td class="py-4 px-6 text-sm text-gray-700 dark:text-gray-300">2024-01-15</td>
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 dark:text-white">$1,234.00</td>
+                                </tr>
+                                <tr class="border-b border-gray-100 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="py-4 px-6 text-sm text-gray-700 dark:text-gray-300">سارة علي</td>
+                                    <td class="py-4 px-6 text-sm text-gray-700 dark:text-gray-300">sara@example.com</td>
+                                    <td class="py-4 px-6 text-sm text-gray-700 dark:text-gray-300">2024-01-12</td>
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 dark:text-white">$567.00</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="py-4 px-6 text-sm text-gray-700 dark:text-gray-300">خالد أحمد</td>
+                                    <td class="py-4 px-6 text-sm text-gray-700 dark:text-gray-300">khaled@example.com</td>
+                                    <td class="py-4 px-6 text-sm text-gray-700 dark:text-gray-300">2024-01-10</td>
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 dark:text-white">$890.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Table with Pagination -->
+                <div class="card overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-dark-border">
+                                    <th class="text-start text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider py-4 px-6">المنتج</th>
+                                    <th class="text-start text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider py-4 px-6">الفئة</th>
+                                    <th class="text-start text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider py-4 px-6">السعر</th>
+                                    <th class="text-start text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider py-4 px-6">الحالة</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 dark:text-white">لابتوب HP</td>
+                                    <td class="py-4 px-6 text-sm text-gray-700 dark:text-gray-300">إلكترونيات</td>
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 dark:text-white">$999.00</td>
+                                    <td class="py-4 px-6"><span class="badge badge-success">متاح</span></td>
+                                </tr>
+                                <tr class="border-b border-gray-100 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 dark:text-white">هاتف iPhone 15</td>
+                                    <td class="py-4 px-6 text-sm text-gray-700 dark:text-gray-300">إلكترونيات</td>
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 dark:text-white">$1,299.00</td>
+                                    <td class="py-4 px-6"><span class="badge badge-warning">منخفض</span></td>
+                                </tr>
+                                <tr class="border-b border-gray-100 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 dark:text-white">سماعات AirPods</td>
+                                    <td class="py-4 px-6 text-sm text-gray-700 dark:text-gray-300">إلكترونيات</td>
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 dark:text-white">$199.00</td>
+                                    <td class="py-4 px-6"><span class="badge badge-success">متاح</span></td>
+                                </tr>
+                                <tr class="border-b border-gray-100 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 dark:text-white">شاشة Samsung</td>
+                                    <td class="py-4 px-6 text-sm text-gray-700 dark:text-gray-300">إلكترونيات</td>
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 dark:text-white">$599.00</td>
+                                    <td class="py-4 px-6"><span class="badge badge-danger">غير متاح</span></td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 dark:text-white">لوحة مفاتيح</td>
+                                    <td class="py-4 px-6 text-sm text-gray-700 dark:text-gray-300">إكسسوارات</td>
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 dark:text-white">$79.00</td>
+                                    <td class="py-4 px-6"><span class="badge badge-success">متاح</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <div class="px-6 py-4 border-t border-gray-200 dark:border-dark-border flex flex-col md:flex-row items-center justify-between gap-4">
+                        <p class="text-sm text-gray-600 dark:text-gray-400">عرض <span class="font-medium">1</span> إلى <span class="font-medium">5</span> من <span class="font-medium">24</span> نتائج</p>
+                        <div class="flex items-center gap-2">
+                            <button class="px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+                            <button class="px-3 py-2 rounded-lg bg-primary-600 text-white">1</button>
+                            <button class="px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800">2</button>
+                            <button class="px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800">3</button>
+                            <button class="px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800">...</button>
+                            <button class="px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800">5</button>
+                            <button class="px-3 py-2 rounded-lg border border-gray-300 dark:border-dark-border text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+    
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

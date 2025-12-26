@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>النماذج</title>
+    <link rel="stylesheet" href="assets/css/output.css">
+</head>
+<body class="bg-gray-50 dark:bg-dark-bg min-h-screen">
+    
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-40 lg:hidden hidden"></div>
+    
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 start-0 z-50 w-64 h-full bg-white dark:bg-dark-surface border-e border-gray-200 dark:border-dark-border transition-transform duration-300 lg:translate-x-0 -translate-x-full">
+        <div class="flex items-center justify-between h-16 px-6 border-b border-gray-200 dark:border-dark-border">
+            <a href="dashboard.html" class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+                    </svg>
+                </div>
+                <span class="text-xl font-bold text-gray-900 dark:text-white">لوحة التحكم</span>
+            </a>
+            <button class="lg:hidden text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        
+        <nav class="p-4 space-y-1 overflow-y-auto h-[calc(100vh-4rem)] scrollbar-hide">
+            <a href="dashboard.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                </svg>
+                <span>الرئيسية</span>
+            </a>
+            <a href="users.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+                <span>المستخدمين</span>
+            </a>
+            <a href="forms.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                <span>النماذج</span>
+            </a>
+            <a href="tables.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                </svg>
+                <span>الجداول</span>
+            </a>
+        </nav>
+    </aside>
+    
+    <div class="lg:ps-64 min-h-screen flex flex-col">
+        <header class="sticky top-0 z-30 bg-white dark:bg-dark-surface border-b border-gray-200 dark:border-dark-border">
+            <div class="flex items-center justify-between h-16 px-4 lg:px-8">
+                <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <svg class="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                
+                <div class="hidden md:flex flex-1 max-w-xl">
+                    <div class="relative w-full">
+                        <svg class="absolute top-1/2 -translate-y-1/2 start-3 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                        <input type="text" placeholder="بحث..." class="w-full ps-10 pe-4 py-2 rounded-lg border border-gray-300 dark:border-dark-border bg-gray-50 dark:bg-dark-bg text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-2">
+                    <button id="dirToggle" class="btn btn-secondary text-sm px-3 py-2">LTR</button>
+                    <button id="themeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <svg class="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                    <button class="relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <svg class="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                        </svg>
+                    </button>
+                    <div class="relative">
+                        <button class="flex items-center gap-2 p-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                            <img src="https://ui-avatars.com/api/?name=Admin+User&background=0ea5e9&color=fff" alt="Profile" class="w-8 h-8 rounded-full">
+                            <span class="hidden md:block text-sm font-medium text-gray-700 dark:text-gray-200">المدير</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <main class="flex-1 p-4 lg:p-8">
+            <div class="mb-8">
+                <h1 class="text-2xl font-bold text-gray-900 dark:text-white">النماذج</h1>
+                <p class="text-gray-600 dark:text-gray-400 mt-1">مكونات النماذج مع دعم RTL</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                <!-- Basic Form -->
+                <div class="card p-6">
+                    <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">نموذج أساسي</h2>
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">الاسم الكامل</label>
+                            <input type="text" placeholder="أدخل اسمك الكامل" class="input">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">البريد الإلكتروني</label>
+                            <input type="email" placeholder="example@example.com" class="input">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">رقم الهاتف</label>
+                            <input type="tel" placeholder="+966 5X XXX XXXX" class="input">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">العنوان</label>
+                            <textarea rows="3" placeholder="أدخل العنوان" class="input"></textarea>
+                        </div>
+                        <div class="flex gap-3">
+                            <button type="submit" class="btn btn-primary">حفظ</button>
+                            <button type="reset" class="btn btn-secondary">إلغاء</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Form with Validation -->
+                <div class="card p-6">
+                    <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">نموذج مع التحقق</h2>
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">الاسم <span class="text-red-500">*</span></label>
+                            <input type="text" class="input border-red-500 focus:ring-red-500">
+                            <p class="mt-1 text-sm text-red-600 dark:text-red-400">هذا الحقل مطلوب</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">البريد الإلكتروني <span class="text-red-500">*</span></label>
+                            <input type="email" placeholder="example@example.com" class="input">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">كلمة المرور <span class="text-red-500">*</span></label>
+                            <input type="password" placeholder="••••••••" class="input">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">تأكيد كلمة المرور <span class="text-red-500">*</span></label>
+                            <input type="password" placeholder="••••••••" class="input">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-full">إنشاء حساب</button>
+                    </form>
+                </div>
+
+                <!-- Selects and Checkboxes -->
+                <div class="card p-6">
+                    <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">القوائم والخيارات</h2>
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">الدولة</label>
+                            <select class="input">
+                                <option value="">اختر الدولة</option>
+                                <option value="sa">المملكة العربية السعودية</option>
+                                <option value="ae">الإمارات العربية المتحدة</option>
+                                <option value="eg">مصر</option>
+                                <option value="jo">الأردن</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">المدينة</label>
+                            <select class="input">
+                                <option value="">اختر المدينة</option>
+                                <option value="riyadh">الرياض</option>
+                                <option value="jeddah">جدة</option>
+                                <option value="dammam">الدمام</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">الاهتمامات</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center gap-3 cursor-pointer">
+                                    <input type="checkbox" class="w-4 h-4 text-primary-600 rounded border-gray-300 focus:ring-primary-500">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">التقنية</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer">
+                                    <input type="checkbox" class="w-4 h-4 text-primary-600 rounded border-gray-300 focus:ring-primary-500">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">التصميم</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer">
+                                    <input type="checkbox" class="w-4 h-4 text-primary-600 rounded border-gray-300 focus:ring-primary-500">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">التسويق</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">الجنس</label>
+                            <div class="flex gap-6">
+                                <label class="flex items-center gap-3 cursor-pointer">
+                                    <input type="radio" name="gender" class="w-4 h-4 text-primary-600 border-gray-300 focus:ring-primary-500">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">ذكر</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer">
+                                    <input type="radio" name="gender" class="w-4 h-4 text-primary-600 border-gray-300 focus:ring-primary-500">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">أنثى</span>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Input States -->
+                <div class="card p-6">
+                    <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">حالات الإدخال</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">عادي</label>
+                            <input type="text" value="القيمة الافتراضية" class="input">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">معطل</label>
+                            <input type="text" value="حقل معطل" disabled class="input opacity-50 cursor-not-allowed">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">للقراءة فقط</label>
+                            <input type="text" value="للقراءة فقط" readonly class="input">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">أيقونة</label>
+                            <div class="relative">
+                                <svg class="absolute top-1/2 -translate-y-1/2 start-3 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                                <input type="text" placeholder="بحث..." class="input ps-10">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+    
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
