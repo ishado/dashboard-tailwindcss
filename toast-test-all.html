@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار شامل للإشعارات</title>
+    <link rel="stylesheet" href="assets/css/output.css">
+</head>
+<body class="bg-gray-50 dark:bg-dark-bg min-h-screen p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">اختبار شامل للإشعارات في جميع الصفحات</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- dashboard.html -->
+            <div class="card p-6">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">dashboard.html</h3>
+                <div class="space-y-3">
+                    <button onclick="Toast.success('تمت العملية بنجاح!')" class="btn btn-success w-full">نجاح</button>
+                    <button onclick="Toast.error('حدث خطأ!')" class="btn btn-danger w-full">خطأ</button>
+                </div>
+                <p class="text-sm text-gray-500 mt-4">يستخدم: toast.js, components.js, validator.js, state.js, charts.js, main.js</p>
+            </div>
+
+            <!-- test.html -->
+            <div class="card p-6">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">test.html</h3>
+                <div class="space-y-3">
+                    <button onclick="Toast.warning('تحذير!')" class="btn btn-warning w-full">تحذير</button>
+                    <button onclick="Toast.info('معلومات')" class="btn btn-primary w-full">معلومات</button>
+                </div>
+                <p class="text-sm text-gray-500 mt-4">يستخدم: toast.js, components.js, validator.js, charts.js, main.js</p>
+            </div>
+
+            <!-- debug-test.html -->
+            <div class="card p-6">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">debug-test.html</h3>
+                <div class="space-y-3">
+                    <button onclick="Toast.success('نجاح')" class="btn btn-success w-full">نجاح</button>
+                    <button onclick="Toast.error('خطأ')" class="btn btn-danger w-full">خطأ</button>
+                </div>
+                <p class="text-sm text-gray-500 mt-4">يستخدم: toast.js, components.js, main.js</p>
+            </div>
+
+            <!-- forms.html -->
+            <div class="card p-6">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">forms.html</h3>
+                <div class="space-y-3">
+                    <button onclick="Toast.success('تم إنشاء الحساب بنجاح!')" class="btn btn-success w-full">نجاح</button>
+                    <button onclick="Toast.error('يرجى تصحيح الأخطاء')" class="btn btn-danger w-full">خطأ</button>
+                </div>
+                <p class="text-sm text-gray-500 mt-4">يستخدم: toast.js, validator.js, main.js</p>
+            </div>
+
+            <!-- components/ui/components.html -->
+            <div class="card p-6">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">components/ui/components.html</h3>
+                <div class="space-y-3">
+                    <button onclick="Toast.success('تم الحذف بنجاح'); Modal.close('modal1')" class="btn btn-danger w-full">حذف</button>
+                </div>
+                <p class="text-sm text-gray-500 mt-4">يستخدم: toast.js, components.js</p>
+            </div>
+
+            <!-- Status Check -->
+            <div class="card p-6">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">حالة النظام</h3>
+                <div id="systemStatus" class="space-y-2"></div>
+                <button onclick="checkStatus()" class="btn btn-secondary w-full mt-4">فحص النظام</button>
+            </div>
+
+        </div>
+
+        <!-- Console Output -->
+        <div class="card p-6 mt-8">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">سجل الأخطاء</h3>
+            <div id="consoleOutput" class="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm max-h-96 overflow-y-auto">
+                <p class="text-gray-400">// جاهز للفحص...</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="assets/js/toast.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        function checkStatus() {
+            const statusDiv = document.getElementById('systemStatus');
+            const consoleDiv = document.getElementById('consoleOutput');
+
+            let html = '';
+            let consoleHtml = '';
+
+            // Check Toast
+            if (typeof Toast !== 'undefined') {
+                html += '<div class="flex items-center gap-2 text-green-600"><span>✓</span> Toast object exists</div>';
+                consoleHtml += '<p class="text-green-400">[SUCCESS] Toast object loaded</p>';
+            } else {
+                html += '<div class="flex items-center gap-2 text-red-600"><span>✗</span> Toast object not found</div>';
+                consoleHtml += '<p class="text-red-400">[ERROR] Toast object not found</p>';
+            }
+
+            // Check Modal
+            if (typeof Modal !== 'undefined') {
+                html += '<div class="flex items-center gap-2 text-green-600"><span>✓</span> Modal object exists</div>';
+                consoleHtml += '<p class="text-green-400">[SUCCESS] Modal object loaded</p>';
+            } else {
+                html += '<div class="flex items-center gap-2 text-red-600"><span>✗</span> Modal object not found</div>';
+                consoleHtml += '<p class="text-red-400">[ERROR] Modal object not found</p>';
+            }
+
+            // Check Toast container
+            const toastContainer = document.getElementById('toast-container');
+            if (toastContainer) {
+                html += '<div class="flex items-center gap-2 text-green-600"><span>✓</span> Toast container exists</div>';
+                consoleHtml += '<p class="text-green-400">[SUCCESS] Toast container created</p>';
+            } else {
+                html += '<div class="flex items-center gap-2 text-red-600"><span>✗</span> Toast container not found</div>';
+                consoleHtml += '<p class="text-red-400">[ERROR] Toast container not found</p>';
+            }
+
+            // Check Toast initialization
+            if (typeof Toast !== 'undefined' && Toast.initialized) {
+                html += '<div class="flex items-center gap-2 text-green-600"><span>✓</span> Toast initialized</div>';
+                consoleHtml += '<p class="text-green-400">[SUCCESS] Toast initialized</p>';
+            } else {
+                html += '<div class="flex items-center gap-2 text-red-600"><span>✗</span> Toast not initialized</div>';
+                consoleHtml += '<p class="text-red-400">[ERROR] Toast not initialized</p>';
+            }
+
+            statusDiv.innerHTML = html;
+            consoleDiv.innerHTML = consoleHtml;
+
+            // Show toast notification
+            if (typeof Toast !== 'undefined') {
+                Toast.success('تم فحص النظام بنجاح!');
+            }
+        }
+
+        // Auto-check on load
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(checkStatus, 500);
+        });
+    </script>
+</body>
+</html>

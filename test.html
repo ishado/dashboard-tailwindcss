@@ -6,134 +6,354 @@
     <title>اختبار - لوحة التحكم</title>
     <link rel="stylesheet" href="assets/css/output.css">
 </head>
-<body class="bg-gray-50 dark:bg-dark-bg min-h-screen p-8">
+<body class="bg-gray-50 dark:bg-dark-bg min-h-screen">
     
-    <div class="max-w-4xl mx-auto space-y-8">
-        
-        <!-- Header -->
-        <div class="text-center">
-            <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">صفحة اختبار</h1>
-            <p class="text-gray-600 dark:text-gray-400">اختبار جميع المكونات</p>
-        </div>
-
-        <!-- RTL/LTR & Dark Mode Toggle -->
-        <div class="flex justify-center gap-4">
-            <button id="dirToggle" class="btn btn-secondary">LTR</button>
-            <button id="themeToggle" class="p-2 rounded-lg bg-white dark:bg-dark-surface shadow-md border border-gray-200 dark:border-dark-border">
-                <svg class="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-40 lg:hidden hidden"></div>
+    
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 start-0 z-50 w-64 h-full bg-white dark:bg-dark-surface border-e border-gray-200 dark:border-dark-border transition-transform duration-300 lg:translate-x-0 -translate-x-full">
+        <div class="flex items-center justify-between h-16 px-6 border-b border-gray-200 dark:border-dark-border">
+            <a href="dashboard.html" class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+                    </svg>
+                </div>
+                <span class="text-xl font-bold text-gray-900 dark:text-white">لوحة التحكم</span>
+            </a>
+            <button class="lg:hidden text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
         </div>
+        
+        <nav class="p-4 space-y-1 overflow-y-auto h-[calc(100vh-4rem)] scrollbar-hide">
+            <a href="dashboard.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                </svg>
+                <span>الرئيسية</span>
+            </a>
+            <a href="users.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+                <span>المستخدمين</span>
+            </a>
+            <a href="forms.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                <span>النماذج</span>
+            </a>
+            <a href="tables.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                </svg>
+                <span>الجداول</span>
+            </a>
+            <a href="test.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                </svg>
+                <span>اختبار المكونات</span>
+            </a>
 
-        <!-- Buttons Test -->
-        <div class="card p-6">
-            <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">الأزرار</h2>
-            <div class="flex flex-wrap gap-3">
-                <button class="btn btn-primary">زر أساسي</button>
-                <button class="btn btn-secondary">زر ثانوي</button>
-                <button class="btn btn-success">زر نجاح</button>
-                <button class="btn btn-danger">زر خطر</button>
-            </div>
-        </div>
+            <a href="debug-test.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                </svg>
+                <span>تصحيح الأخطاء</span>
+            </a>
 
-        <!-- Badges Test -->
-        <div class="card p-6">
-            <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">الشارات</h2>
-            <div class="flex flex-wrap gap-3">
-                <span class="badge badge-primary">أساسي</span>
-                <span class="badge badge-success">نجاح</span>
-                <span class="badge badge-warning">تحذير</span>
-                <span class="badge badge-danger">خطر</span>
-            </div>
-        </div>
+            <a href="toast-test-all.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span>اختبار الإشعارات</span>
+            </a>
 
-        <!-- Input Test -->
-        <div class="card p-6">
-            <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">الحقول الإدخال</h2>
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">الاسم</label>
-                    <input type="text" placeholder="أدخل اسمك" class="input">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">البريد الإلكتروني</label>
-                    <input type="email" placeholder="example@example.com" class="input">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">الرسالة</label>
-                    <textarea rows="3" placeholder="اكتب رسالتك" class="input"></textarea>
-                </div>
-            </div>
-        </div>
-
-        <!-- Alert Test -->
-        <div class="card p-6">
-            <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">التنبيهات</h2>
-            <div class="space-y-4">
-                <div class="flex items-start gap-3 p-4 bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-lg">
-                    <svg class="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            <div class="pt-4 border-t border-gray-200 dark:border-dark-border mt-4">
+                <p class="px-4 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">الحساب</p>
+                
+                <a href="login.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
                     </svg>
-                    <div class="flex-1">
-                        <h4 class="font-medium text-green-800 dark:text-green-200">نجاح</h4>
-                        <p class="text-sm text-green-700 dark:text-green-300 mt-1">تمت العملية بنجاح</p>
+                    <span>تسجيل الدخول</span>
+                </a>
+                
+                <a href="register.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+                    </svg>
+                    <span>إنشاء حساب</span>
+                </a>
+            </div>
+        </nav>
+    </aside>
+    
+    <div class="lg:ps-64 min-h-screen flex flex-col">
+        <header class="sticky top-0 z-30 bg-white dark:bg-dark-surface border-b border-gray-200 dark:border-dark-border">
+            <div class="flex items-center justify-between h-16 px-4 lg:px-8">
+                <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <svg class="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                
+                <div class="hidden md:flex flex-1 max-w-xl">
+                    <div class="relative w-full">
+                        <svg class="absolute top-1/2 -translate-y-1/2 start-3 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                        <input type="text" placeholder="بحث..." class="w-full ps-10 pe-4 py-2 rounded-lg border border-gray-300 dark:border-dark-border bg-gray-50 dark:bg-dark-bg text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-2">
+                    <button id="dirToggle" class="btn btn-secondary text-sm px-3 py-2">LTR</button>
+                    <button id="themeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <svg class="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+        
+        <main class="flex-1 p-4 lg:p-8">
+            <div class="mb-8">
+                <h1 class="text-2xl font-bold text-gray-900 dark:text-white">اختبار المكونات</h1>
+                <p class="text-gray-600 dark:text-gray-400 mt-1">جميع المكونات والمميزات الجديدة</p>
+            </div>
+
+            <div class="space-y-8">
+                
+                <!-- Toast Notifications -->
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">الإشعارات المنبثقة</h2>
+                    <div class="flex flex-wrap gap-3">
+                        <button onclick="testToast.success('تمت العملية بنجاح!')" class="btn btn-success">نجاح</button>
+                        <button onclick="testToast.error('حدث خطأ!')" class="btn btn-danger">خطأ</button>
+                        <button onclick="testToast.warning('تنبيه!')" class="btn btn-warning">تحذير</button>
+                        <button onclick="testToast.info('معلومات')" class="btn btn-primary">معلومات</button>
                     </div>
                 </div>
 
-                <div class="flex items-start gap-3 p-4 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-lg">
-                    <svg class="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                    <div class="flex-1">
-                        <h4 class="font-medium text-red-800 dark:text-red-200">خطأ</h4>
-                        <p class="text-sm text-red-700 dark:text-red-300 mt-1">حدث خطأ ما</p>
+                <!-- Buttons -->
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">الأزرار</h2>
+                    <div class="flex flex-wrap gap-3">
+                        <button class="btn btn-primary">زر أساسي</button>
+                        <button class="btn btn-secondary">زر ثانوي</button>
+                        <button class="btn btn-success">زر نجاح</button>
+                        <button class="btn btn-danger">زر خطر</button>
+                        <button class="btn btn-outline" style="@apply border border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-dark-border dark:text-gray-300 dark:hover:bg-gray-800">مخطط</button>
                     </div>
                 </div>
+
+                <!-- Badges -->
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">الشارات</h2>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="badge badge-primary">أساسي</span>
+                        <span class="badge badge-success">نجاح</span>
+                        <span class="badge badge-warning">تحذير</span>
+                        <span class="badge badge-danger">خطر</span>
+                    </div>
+                </div>
+
+                <!-- Dropdowns -->
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">القوائم المنسدلة</h2>
+                    <div class="flex gap-4">
+                        <div id="dropdownTest" class="dropdown">
+                            <button data-dropdown class="btn btn-secondary">
+                                إجراءات
+                                <svg class="w-4 h-4 me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="#" class="dropdown-item">تعديل</a>
+                                <a href="#" class="dropdown-item">حذف</a>
+                                <a href="#" class="dropdown-item">تصدير</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">التبويبات</h2>
+                    <div data-tabs-group="testTabs">
+                        <div class="flex gap-2 border-b border-gray-200 dark:border-dark-border pb-4 mb-4">
+                            <button data-tab="tab1" class="px-4 py-2 rounded-lg text-sm font-medium transition-colors bg-primary-600 text-white">التبويب 1</button>
+                            <button data-tab="tab2" class="px-4 py-2 rounded-lg text-sm font-medium transition-colors text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800">التبويب 2</button>
+                        </div>
+                        <div data-tab-content="tab1">
+                            <p class="text-gray-600 dark:text-gray-400">محتوى التبويب الأول</p>
+                        </div>
+                        <div data-tab-content="tab2" class="hidden">
+                            <p class="text-gray-600 dark:text-gray-400">محتوى التبويب الثاني</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion -->
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">القوائم القابلة للطي</h2>
+                    <div id="accordionTest1" class="border border-gray-200 dark:border-dark-border rounded-lg mb-2">
+                        <button data-accordion class="w-full flex items-center justify-between p-4 text-start">
+                            <span class="font-medium text-gray-900 dark:text-white">سؤال 1</span>
+                            <svg data-accordion-icon class="w-5 h-5 text-gray-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div data-accordion-content class="px-4 pb-4 text-gray-600 dark:text-gray-400 hidden">
+                            إجابة السؤال الأول
+                        </div>
+                    </div>
+                    <div id="accordionTest2" class="border border-gray-200 dark:border-dark-border rounded-lg">
+                        <button data-accordion class="w-full flex items-center justify-between p-4 text-start">
+                            <span class="font-medium text-gray-900 dark:text-white">سؤال 2</span>
+                            <svg data-accordion-icon class="w-5 h-5 text-gray-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div data-accordion-content class="px-4 pb-4 text-gray-600 dark:text-gray-400 hidden">
+                            إجابة السؤال الثاني
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">النوافذ المنبثقة</h2>
+                    <button data-modal="testModal" class="btn btn-primary">فتح النافذة</button>
+                    
+                    <div id="testModal" class="modal">
+                        <div class="modal-backdrop"></div>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">نافذة اختبار</h3>
+                                <button data-modal-close class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-gray-700 dark:text-gray-300">هذه نافذة اختبار لجميع المكونات</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button data-modal-close class="btn btn-secondary">إغلاق</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Validation -->
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">نموذج مع التحقق</h2>
+                    <form id="testForm" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">الاسم</label>
+                            <input type="text" id="testName" name="name" data-label="الاسم" data-validate="required|minLength:3" class="input">
+                            <p id="testName-error" class="mt-1 text-sm text-red-600 dark:text-red-400 hidden"></p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">البريد الإلكتروني</label>
+                            <input type="email" id="testEmail" name="email" data-label="البريد الإلكتروني" data-validate="required|email" class="input">
+                            <p id="testEmail-error" class="mt-1 text-sm text-red-600 dark:text-red-400 hidden"></p>
+                        </div>
+                        <button type="submit" class="btn btn-primary">إرسال</button>
+                    </form>
+                </div>
+
+                <!-- Charts -->
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">الرسوم البيانية</h2>
+                    <div class="h-64">
+                        <canvas id="testChart"></canvas>
+                    </div>
+                </div>
+
             </div>
-        </div>
-
-        <!-- Table Test -->
-        <div class="card p-6 overflow-x-auto">
-            <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">الجدول</h2>
-            <table class="w-full">
-                <thead>
-                    <tr class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-dark-border">
-                        <th class="text-start text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider py-3 px-4">الاسم</th>
-                        <th class="text-start text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider py-3 px-4">البريد</th>
-                        <th class="text-start text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider py-3 px-4">الحالة</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="border-b border-gray-100 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-gray-800">
-                        <td class="py-3 px-4 text-sm text-gray-900 dark:text-white">أحمد محمد</td>
-                        <td class="py-3 px-4 text-sm text-gray-700 dark:text-gray-300">ahmed@example.com</td>
-                        <td class="py-3 px-4"><span class="badge badge-success">نشط</span></td>
-                    </tr>
-                    <tr class="border-b border-gray-100 dark:border-dark-border hover:bg-gray-50 dark:hover:bg-gray-800">
-                        <td class="py-3 px-4 text-sm text-gray-900 dark:text-white">سارة علي</td>
-                        <td class="py-3 px-4 text-sm text-gray-700 dark:text-gray-300">sara@example.com</td>
-                        <td class="py-3 px-4"><span class="badge badge-warning">قيد المعالجة</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Link to Main Pages -->
-        <div class="card p-6 text-center">
-            <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">الصفحات الرئيسية</h2>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="dashboard.html" class="btn btn-primary">لوحة التحكم</a>
-                <a href="users.html" class="btn btn-secondary">المستخدمين</a>
-                <a href="forms.html" class="btn btn-secondary">النماذج</a>
-                <a href="tables.html" class="btn btn-secondary">الجداول</a>
-                <a href="login.html" class="btn btn-secondary">تسجيل الدخول</a>
-                <a href="register.html" class="btn btn-secondary">إنشاء حساب</a>
-            </div>
-        </div>
-
+        </main>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="assets/js/toast.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/validator.js"></script>
+    <script src="assets/js/charts.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+        const testToast = {
+            success: (msg) => {
+                if (typeof Toast !== 'undefined') {
+                    Toast.success(msg);
+                } else {
+                    console.error('Toast not loaded');
+                }
+            },
+            error: (msg) => {
+                if (typeof Toast !== 'undefined') {
+                    Toast.error(msg);
+                } else {
+                    console.error('Toast not loaded');
+                }
+            },
+            warning: (msg) => {
+                if (typeof Toast !== 'undefined') {
+                    Toast.warning(msg);
+                } else {
+                    console.error('Toast not loaded');
+                }
+            },
+            info: (msg) => {
+                if (typeof Toast !== 'undefined') {
+                    Toast.info(msg);
+                } else {
+                    console.error('Toast not loaded');
+                }
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof FormValidator !== 'undefined') {
+                FormValidator.init('testForm', {
+                    onSuccess: () => {
+                        if (typeof Toast !== 'undefined') {
+                            Toast.success('تم التحقق بنجاح!');
+                        }
+                    },
+                    onError: () => {
+                        if (typeof Toast !== 'undefined') {
+                            Toast.error('يرجى تصحيح الأخطاء');
+                        }
+                    }
+                });
+            }
+
+            if (typeof ChartManager !== 'undefined') {
+                ChartManager.createLineChart('testChart',
+                    ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو'],
+                    [{
+                        label: 'مبيعات',
+                        data: [12, 19, 3, 5, 2, 3],
+                        borderColor: 'rgba(14, 165, 233, 1)',
+                        backgroundColor: 'rgba(14, 165, 233, 0.2)',
+                        fill: true
+                    }],
+                    'مبيعات الشهور'
+                );
+            }
+        });
+    </script>
 </body>
 </html>

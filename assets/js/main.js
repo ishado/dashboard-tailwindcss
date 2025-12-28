@@ -105,4 +105,7 @@ const Sidebar = {
 document.addEventListener('DOMContentLoaded', () => {
   DirectionManager.init();
   Sidebar.init();
+  if (typeof Toast !== 'undefined') {
+    Toast.init();
+  }
 });

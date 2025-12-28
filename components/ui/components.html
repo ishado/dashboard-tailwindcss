@@ -129,23 +129,169 @@
 
 </div>
 
+<!-- Toast Notifications -->
+<div class="space-y-4 mb-8">
+    
+    <h2 class="text-lg font-semibold text-gray-900 dark:text-white">الإشعارات المنبثقة</h2>
+    
+    <div class="flex flex-wrap gap-3">
+        <button onclick="Toast.success('تمت العملية بنجاح!')" class="btn btn-success">نجاح</button>
+        <button onclick="Toast.error('حدث خطأ، يرجى المحاولة مرة أخرى')" class="btn btn-danger">خطأ</button>
+        <button onclick="Toast.warning('تنبيه: تأكد من البيانات المدخلة')" class="btn btn-warning" style="@apply bg-yellow-500 text-white hover:bg-yellow-600">تحذير</button>
+        <button onclick="Toast.info('رسالة إعلامية')" class="btn btn-primary">معلومات</button>
+    </div>
+
+</div>
+
+<!-- Dropdowns -->
+<div class="space-y-4 mb-8">
+    
+    <h2 class="text-lg font-semibold text-gray-900 dark:text-white">القوائم المنسدلة</h2>
+    
+    <div class="flex flex-wrap gap-4">
+        <!-- Basic Dropdown -->
+        <div id="dropdown1" class="dropdown">
+            <button data-dropdown class="btn btn-secondary">
+                إجراءات
+                <svg class="w-4 h-4 me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+            <div class="dropdown-menu">
+                <a href="#" class="dropdown-item">تعديل</a>
+                <a href="#" class="dropdown-item">حذف</a>
+                <a href="#" class="dropdown-item">تصدير</a>
+            </div>
+        </div>
+
+        <!-- Dropdown with Icons -->
+        <div id="dropdown2" class="dropdown">
+            <button data-dropdown class="btn btn-secondary">
+                الملف
+                <svg class="w-4 h-4 me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+            <div class="dropdown-menu">
+                <a href="#" class="dropdown-item flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    جديد
+                </a>
+                <a href="#" class="dropdown-item flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+                    </svg>
+                    حفظ
+                </a>
+                <hr class="my-1 border-gray-200 dark:border-gray-700">
+                <a href="#" class="dropdown-item flex items-center gap-2 text-red-600 dark:text-red-400">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                    </svg>
+                    خروج
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Tabs -->
+<div class="space-y-4 mb-8">
+    
+    <h2 class="text-lg font-semibold text-gray-900 dark:text-white">التبويبات</h2>
+    
+    <div data-tabs-group="tabs1" class="card p-6">
+        <div class="flex gap-2 border-b border-gray-200 dark:border-dark-border pb-4 mb-4">
+            <button data-tab="tab1" class="px-4 py-2 rounded-lg text-sm font-medium transition-colors bg-primary-600 text-white">الرئيسية</button>
+            <button data-tab="tab2" class="px-4 py-2 rounded-lg text-sm font-medium transition-colors text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800">الملف الشخصي</button>
+            <button data-tab="tab3" class="px-4 py-2 rounded-lg text-sm font-medium transition-colors text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800">الإعدادات</button>
+        </div>
+        
+        <div data-tab-content="tab1" class="tab-content">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">الرئيسية</h3>
+            <p class="text-gray-600 dark:text-gray-400">محتوى التبويب الرئيسي.</p>
+        </div>
+        
+        <div data-tab-content="tab2" class="tab-content hidden">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">الملف الشخصي</h3>
+            <p class="text-gray-600 dark:text-gray-400">معلومات المستخدم والملف الشخصي.</p>
+        </div>
+        
+        <div data-tab-content="tab3" class="tab-content hidden">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">الإعدادات</h3>
+            <p class="text-gray-600 dark:text-gray-400">إعدادات الحساب والتفضيلات.</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- Accordion -->
+<div class="space-y-4 mb-8">
+    
+    <h2 class="text-lg font-semibold text-gray-900 dark:text-white">القوائم القابلة للطي</h2>
+    
+    <div class="space-y-2">
+        <!-- Accordion Item 1 -->
+        <div id="accordion1" class="card overflow-hidden">
+            <button data-accordion class="w-full flex items-center justify-between p-4 text-start">
+                <span class="font-medium text-gray-900 dark:text-white">ما هو نظام إدارة المحتوى؟</span>
+                <svg data-accordion-icon class="w-5 h-5 text-gray-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+            <div data-accordion-content class="px-4 pb-4 text-gray-600 dark:text-gray-400 hidden">
+                نظام إدارة المحتوى هو برنامج يسمح لك بإنشاء وإدارة المحتوى الرقمي بسهولة دون الحاجة إلى معرفة برمجية متقدمة.
+            </div>
+        </div>
+
+        <!-- Accordion Item 2 -->
+        <div id="accordion2" class="card overflow-hidden">
+            <button data-accordion class="w-full flex items-center justify-between p-4 text-start">
+                <span class="font-medium text-gray-900 dark:text-white">كيف يمكنني الدعم الفني؟</span>
+                <svg data-accordion-icon class="w-5 h-5 text-gray-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+            <div data-accordion-content class="px-4 pb-4 text-gray-600 dark:text-gray-400 hidden">
+                يمكنك التواصل مع فريق الدعم الفني عبر البريد الإلكتروني أو الهاتف على مدار الساعة.
+            </div>
+        </div>
+
+        <!-- Accordion Item 3 -->
+        <div id="accordion3" class="card overflow-hidden">
+            <button data-accordion class="w-full flex items-center justify-between p-4 text-start">
+                <span class="font-medium text-gray-900 dark:text-white">ما هي مدة الضمان؟</span>
+                <svg data-accordion-icon class="w-5 h-5 text-gray-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+            <div data-accordion-content class="px-4 pb-4 text-gray-600 dark:text-gray-400 hidden">
+                نقدم ضماناً لمدة سنة على جميع منتجاتنا يشمل العيوب المصنعية والأعطال الفنية.
+            </div>
+        </div>
+    </div>
+
+</div>
+
 <!-- Modal Example -->
-<div class="space-y-4">
+<div class="space-y-4 mb-8">
     
     <h2 class="text-lg font-semibold text-gray-900 dark:text-white">النوافذ المنبثقة</h2>
     
-    <button id="openModal" class="btn btn-primary">فتح النافذة</button>
+    <button data-modal="modal1" class="btn btn-primary">فتح النافذة</button>
     
-    <!-- Modal Overlay -->
-    <div id="modalOverlay" class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4">
-        
-        <!-- Modal -->
-        <div class="bg-white dark:bg-dark-surface rounded-xl shadow-2xl max-w-md w-full">
+    <!-- Modal -->
+    <div id="modal1" class="modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content flex items-center justify-center">
             
             <!-- Modal Header -->
-            <div class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-dark-border">
+            <div class="modal-header">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">تأكيد الحذف</h3>
-                <button id="closeModal" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
+                <button data-modal-close class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
@@ -153,45 +299,20 @@
             </div>
             
             <!-- Modal Body -->
-            <div class="p-6">
+            <div class="modal-body">
                 <p class="text-gray-700 dark:text-gray-300">هل أنت متأكد من حذف هذا العنصر؟ لا يمكن التراجع عن هذا الإجراء.</p>
             </div>
             
             <!-- Modal Footer -->
-            <div class="flex items-center justify-end gap-3 p-6 border-t border-gray-200 dark:border-dark-border">
-                <button id="cancelModal" class="btn btn-secondary">إلغاء</button>
-                <button class="btn btn-danger">حذف</button>
-            </div>
-            
+            <div class="modal-footer">
+                <button data-modal-close class="btn btn-secondary">إلغاء</button>
+                <button onclick="Toast.success('تم الحذف بنجاح'); Modal.close('modal1')" class="btn btn-danger">حذف</button>
         </div>
-        
     </div>
-    
+
 </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('modalOverlay');
-    const openBtn = document.getElementById('openModal');
-    const closeBtn = document.getElementById('closeModal');
-    const cancelBtn = document.getElementById('cancelModal');
+<script src="assets/js/toast.js"></script>
+<script src="assets/js/components.js"></script>
 
-    if (openBtn) {
-        openBtn.addEventListener('click', () => {
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        });
-    }
-
-    const closeModal = () => {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-    };
-
-    if (closeBtn) closeBtn.addEventListener('click', closeModal);
-    if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-    });
-});
-</script>
+</div>

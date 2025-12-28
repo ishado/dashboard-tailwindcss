@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار الإشعارات والنوافذ</title>
+    <link rel="stylesheet" href="assets/css/output.css">
+</head>
+<body class="bg-gray-50 dark:bg-dark-bg min-h-screen p-8">
+    
+    <div class="max-w-4xl mx-auto space-y-8">
+        <h1 class="text-2xl font-bold text-gray-900 dark:text-white">اختبار الإشعارات والنوافذ</h1>
+        
+        <!-- Toast Test -->
+        <div class="card p-6">
+            <h2 class="text-lg font-semibold mb-4">اختبار الإشعارات</h2>
+            <div class="flex gap-3">
+                <button onclick="Toast.success('نجاح')" class="btn btn-success">نجاح</button>
+                <button onclick="Toast.error('خطأ')" class="btn btn-danger">خطأ</button>
+                <button onclick="Toast.warning('تحذير')" class="btn btn-warning" style="@apply bg-yellow-500 text-white">تحذير</button>
+                <button onclick="Toast.info('معلومات')" class="btn btn-primary">معلومات</button>
+            </div>
+        </div>
+        
+        <!-- Modal Test -->
+        <div class="card p-6">
+            <h2 class="text-lg font-semibold mb-4">اختبار النوافذ المنبثقة</h2>
+            <button data-modal="testModal" class="btn btn-primary">فتح النافذة</button>
+            
+            <div id="testModal" class="modal">
+                <div class="modal-backdrop"></div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="text-lg font-semibold">نافذة اختبار</h3>
+                        <button data-modal-close class="text-gray-400 hover:text-gray-600">✕</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>هذه نافذة اختبار</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button data-modal-close class="btn btn-secondary">إغلاق</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Console Test -->
+        <div class="card p-6">
+            <h2 class="text-lg font-semibold mb-4">تحقق من الأخطاء في Console</h2>
+            <button onclick="checkErrors()" class="btn btn-secondary">فحص الأخطاء</button>
+            <div id="errorOutput" class="mt-4 p-4 bg-gray-100 dark:bg-gray-800 rounded text-sm"></div>
+        </div>
+    </div>
+
+    <script src="assets/js/toast.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        function checkErrors() {
+            const output = document.getElementById('errorOutput');
+            let html = '<h3 class="font-bold mb-2">التحقق:</h3>';
+            
+            // Check Toast
+            if (typeof Toast !== 'undefined') {
+                html += '<p class="text-green-600">✓ Toast object exists</p>';
+            } else {
+                html += '<p class="text-red-600">✗ Toast object not found</p>';
+            }
+            
+            // Check Modal
+            if (typeof Modal !== 'undefined') {
+                html += '<p class="text-green-600">✓ Modal object exists</p>';
+            } else {
+                html += '<p class="text-red-600">✗ Modal object not found</p>';
+            }
+            
+            // Check Toast container
+            const toastContainer = document.getElementById('toast-container');
+            if (toastContainer) {
+                html += '<p class="text-green-600">✓ Toast container exists</p>';
+            } else {
+                html += '<p class="text-red-600">✗ Toast container not found</p>';
+            }
+            
+            // Check modal elements
+            const modal = document.getElementById('testModal');
+            if (modal) {
+                html += '<p class="text-green-600">✓ Modal element exists</p>';
+            } else {
+                html += '<p class="text-red-600">✗ Modal element not found</p>';
+            }
+            
+            output.innerHTML = html;
+        }
+    </script>
+</body>
+</html>

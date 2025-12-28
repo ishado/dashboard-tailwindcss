@@ -10,6 +10,14 @@ A complete, production-ready admin dashboard built with TailwindCSS featuring fu
 - ✅ **Clean Architecture**: Reusable components and organized folder structure
 - ✅ **Arabic-First**: Designed with Arabic as the default language
 - ✅ **Ready for Laravel Blade**: Template structure optimized for Laravel integration
+- ✅ **Toast Notifications**: Advanced notification system with multiple types
+- ✅ **Modal Components**: Responsive modal dialogs with animations
+- ✅ **Dropdown Menus**: Accessible dropdown menus with keyboard support
+- ✅ **Tabs & Accordion**: Interactive tabs and accordion components
+- ✅ **Form Validation**: Comprehensive client-side form validation
+- ✅ **State Management**: Simple reactive state management system
+- ✅ **Interactive Charts**: Real-time charts using Chart.js library
+- ✅ **Component Library**: Pre-built UI components ready to use
 
 ## Project Structure
 
@@ -158,8 +166,135 @@ Example:
 </div>
 ```
 
+### Toast Notifications
+```javascript
+Toast.success('Operation successful!');
+Toast.error('An error occurred');
+Toast.warning('Please check your input');
+Toast.info('Information message');
+```
+
 ### Modals
-See `components/ui/components.html` for modal implementation with JavaScript.
+```html
+<button data-modal="modalId">Open Modal</button>
+<div id="modalId" class="modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Modal Title</h3>
+            <button data-modal-close>Close</button>
+        </div>
+        <div class="modal-body">Modal Content</div>
+        <div class="modal-footer">
+            <button data-modal-close>Cancel</button>
+            <button>Confirm</button>
+        </div>
+    </div>
+</div>
+```
+
+### Dropdowns
+```html
+<div id="dropdownId" class="dropdown">
+    <button data-dropdown>Toggle Dropdown</button>
+    <div class="dropdown-menu">
+        <a href="#" class="dropdown-item">Option 1</a>
+        <a href="#" class="dropdown-item">Option 2</a>
+    </div>
+</div>
+```
+
+### Tabs
+```html
+<div data-tabs-group="tabs1">
+    <button data-tab="tab1">Tab 1</button>
+    <button data-tab="tab2">Tab 2</button>
+    
+    <div data-tab-content="tab1">Content 1</div>
+    <div data-tab-content="tab2">Content 2</div>
+</div>
+```
+
+### Accordion
+```html
+<div id="accordionId">
+    <button data-accordion>Accordion Item</button>
+    <div data-accordion-content>Accordion Content</div>
+</div>
+```
+
+### Form Validation
+```html
+<input 
+    type="email" 
+    id="email"
+    data-validate="required|email"
+    data-label="Email"
+    class="input"
+>
+<p id="email-error" class="text-red-600 hidden"></p>
+
+<script>
+FormValidator.init('formId', {
+    onSuccess: (formData) => console.log(formData),
+    onError: () => console.log('Validation failed')
+});
+</script>
+```
+
+### Charts
+```javascript
+ChartManager.createLineChart('canvasId', labels, datasets, 'Chart Title');
+ChartManager.createBarChart('canvasId', labels, datasets, 'Chart Title');
+ChartManager.createPieChart('canvasId', labels, data, 'Chart Title');
+```
+
+## Advanced Features
+
+### State Management
+The dashboard includes a simple state management system:
+
+```javascript
+// Get state
+const user = StateManager.get('userName');
+const isLoggedIn = StateManager.get('isLoggedIn');
+
+// Dispatch actions
+StateManager.dispatch('switchTheme');
+StateManager.dispatch('switchDirection');
+StateManager.dispatch('showNotification', { message: 'Hello!', type: 'success' });
+
+// Subscribe to state changes
+StateManager.subscribe((state) => {
+    console.log('State changed:', state);
+});
+```
+
+### Form Validation Rules
+Available validation rules:
+
+- `required` - Field is required
+- `email` - Valid email format
+- `phone` - Valid phone number
+- `password` - Strong password (8+ chars, uppercase, lowercase, number)
+- `url` - Valid URL
+- `number` - Numeric value
+- `positive` - Positive number
+- `date` - Valid date
+- `minLength:n` - Minimum length n
+- `maxLength:n` - Maximum length n
+- `confirm:fieldId` - Match with another field
+- `age:n` - Minimum age n
+- `custom` - Custom validator function
+
+Example:
+```html
+<input 
+    data-validate="required|minLength:3|email"
+    data-label="Email Address"
+    class="input"
+>
+```
 
 ## Dark Mode
 
